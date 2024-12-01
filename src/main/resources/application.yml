@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: SpringTiendaWeb
+  datasource:
+    url: jdbc:mysql://localhost:3306/tienda?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: tchai1712

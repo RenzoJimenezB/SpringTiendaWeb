@@ -28,6 +28,12 @@
     </scm>
     <properties>
         <java.version>17</java.version>
+        <webjars-bootstrap.version>5.0.0</webjars-bootstrap.version>
+        <webjars-jquery-ui.version>1.12.1</webjars-jquery-ui.version>
+        <webjars-jquery.version>3.5.1</webjars-jquery.version>
+        <webjars-papper.version>2.0.2</webjars-papper.version>
+        <webjars-font-awesome.version>5.14.0</webjars-font-awesome.version>
+        <webjars-bs-custom-file-input.version>1.3.4</webjars-bs-custom-file-input.version>
     </properties>
     <dependencies>
         <dependency>
@@ -64,6 +70,43 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- webjars -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>${webjars-jquery.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery-ui</artifactId>
+            <version>${webjars-jquery-ui.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>${webjars-bootstrap.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>popper.js</artifactId>
+            <version>${webjars-papper.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>font-awesome</artifactId>
+            <version>${webjars-font-awesome.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>bs-custom-file-input</artifactId>
+            <version>${webjars-bs-custom-file-input.version}</version>
+        </dependency>
+        <!-- end of webjars -->
     </dependencies>
 
     <build>

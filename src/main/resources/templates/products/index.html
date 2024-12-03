@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/default :: layout(~{::title}, ~{::assets}, ~{::nav}, ~{::content})}">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Lista de Productos</title>
+
+  <th:block th:fragment="assets">
+  </th:block>
+
+</head>
+<body>
+  <nav th:fragment="nav" aria-label="breadcrumb">
+    <ol class="breadcrumb my-3">
+      <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+      <li class="breadcrumb-item"><a href="#">Mantenimiento</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Productos</li>
+    </ol>
+  </nav>
+
+  <th:block th:fragment="content">
+
+  </th:block>
+
+</body>
+</html>

@@ -63,7 +63,7 @@ class ProductServiceTest {
     void findByName() throws Exception {
         log.info("Testing ProductService.getProductsByName()");
 
-        List<Product> products = productService.findByName("Test");
+        List<Product> products = productService.findByName("Intel Core I7");
         assertNotNull(products);
         assertFalse(products.isEmpty());
         assertFalse(products.contains(null));
@@ -75,8 +75,8 @@ class ProductServiceTest {
     void findById() throws Exception {
         log.info("Testing ProductService.getProductById()");
 
-        String EXPECTED_NAME = "NVIDIA";
-        Long id = 20L;
+        String EXPECTED_NAME = "Intel Core I7";
+        Long id = 1L;
         Product product = productService.findById(id);
 
         assertNotNull(product);
@@ -89,9 +89,9 @@ class ProductServiceTest {
     void update() throws Exception {
         log.info("Testing ProductService.update()");
 
-        Long id = 20L;
-        String ORIGINAL_NAME = "NVIDIA";
-        String UPDATED_NAME = "NVIDIA UPDATED";
+        Long id = 1L;
+        String ORIGINAL_NAME = "Intel Core I7";
+        String UPDATED_NAME = "Intel Core I7 Updated";
         Product product;
 
         product = productService.findById(id);

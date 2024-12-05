@@ -2,26 +2,69 @@
 <html xmlns:th="http://www.thymeleaf.org"
       th:replace="~{layouts/default :: layout(~{::title}, ~{::assets}, ~{::nav}, ~{::content})}">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-  <title>Lista de Productos</title>
+    <title>Lista de Productos</title>
 
-  <th:block th:fragment="assets">
-  </th:block>
+    <th:block th:fragment="assets">
+    </th:block>
 
 </head>
 <body>
-  <nav th:fragment="nav" aria-label="breadcrumb">
+<nav th:fragment="nav" aria-label="breadcrumb">
     <ol class="breadcrumb my-3">
-      <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-      <li class="breadcrumb-item"><a href="#">Mantenimiento</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Productos</li>
+        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="#">Mantenimiento</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Productos</li>
     </ol>
-  </nav>
+</nav>
 
-  <th:block th:fragment="content">
+<th:block th:fragment="content">
 
-  </th:block>
+    <div class="card">
+        <div class="card-header">
+            Lista de Productos
+        </div>
+        <div class="card-body">
+            <table class="table table-borderless table-striped mb-0">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Categoría</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Image</th>
+                    <th width="300">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.id}"/>
+                    <td th:text="${product.category.name}"/>
+                    <td th:text="${product.name}"/>
+                    <td th:text="${'S/' + product.price}"/>
+                    <td th:text="${product.stock}"/>
+                    <td></td>
+                    <td class="text-left">
+                        <a th:href="@{/products/show/} + ${product.id}" class="btn btn-info btn-sm"><i
+                                class="fa fa-eye"></i> Mostrar</a>
+                        <a th:href="@{/products/edit/} + ${product.id}" class="btn btn-warning btn-sm"><i
+                                class="fa fa-edit"></i> Editar</a>
+                        <a th:href="@{/products/delete/} + ${product.id}" class="btn btn-danger btn-sm"><i
+                                class="fa fa-trash"></i> Eliminar</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <a th:href="@{/products/create}" class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
+        </div>
+    </div>
+
+
+</th:block>
 
 </body>
 </html>

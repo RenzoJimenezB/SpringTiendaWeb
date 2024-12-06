@@ -5,3 +5,7 @@ spring:
     url: jdbc:mysql://localhost:3306/tienda?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
     password: tchai1712
+
+app:
+  storage:
+    path: /Users/rajb/var/data/

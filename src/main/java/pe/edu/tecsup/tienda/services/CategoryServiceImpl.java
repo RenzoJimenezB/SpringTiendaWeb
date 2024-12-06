@@ -19,7 +19,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Category> getCategories() throws Exception {
-        log.info("CategoryServiceImpl.getCategories()");
+//        log.info("CategoryServiceImpl.getCategories()");
 
         return categoryRepository.findAll();
     }

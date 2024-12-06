@@ -31,6 +31,15 @@ public class Product {
 
     private Integer stock;
 
+    @Column(name = "imagen_nombre")
+    private String image_name;
+
+    @Column(name = "imagen_tipo")
+    private String image_type;
+
+    @Column(name = "imagen_tamanio")
+    private String image_size;
+
     @Column(name = "estado")
     private Integer state;
 

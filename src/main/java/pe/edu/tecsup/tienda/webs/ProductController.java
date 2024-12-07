@@ -79,11 +79,11 @@ public class ProductController {
 
         product.setCreatedAt(new Date());
         product.setState(1);
-        
+
         productService.save(product);
 
         redirectAttributes.addFlashAttribute("message", "Product created");
-        return "redirect:/products/";
+        return "redirect:/products";
     }
 
 }

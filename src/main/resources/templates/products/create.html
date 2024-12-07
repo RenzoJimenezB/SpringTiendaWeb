@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{layouts/default :: layout(~{::title}, ~{::nav}, ~{::content})}">
+      th:replace="~{layouts/default :: layout(~{::title}, ~{::assets},~{::nav}, ~{::content})}">
 <head>
     <meta charset="UTF-8">
 
     <title>Create Product</title>
+
+    <th:block th:fragment="assets">
+    </th:block>
 
 </head>
 

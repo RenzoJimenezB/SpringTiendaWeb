@@ -29,7 +29,7 @@
                 <input type="hidden" name="id" th:field="*{id}">
 
                 <div class="form-group">
-                    <label for="id_categoria">Categor&iacute;a</label>
+                    <label for="id_categoria">Categoría</label>
                     <select id="id_categoria" name="categoria" th:field="*{category}" class="form-control"
                             required="required">
                         <option th:each="category : ${categories}" value="" th:value="${category.id}"
@@ -74,7 +74,7 @@
 
                     <div class="custom-file">
                         <input type="file" id="file" name="file" class="custom-file-input">
-                        <label for="imagen" class="custom-file-label" data-browse="Elegir">
+                        <label for="file" class="custom-file-label" data-browse="Elegir">
                             Seleccionar archivo...
                         </label>
                     </div>

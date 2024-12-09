@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -59,7 +58,7 @@ public class ProductController {
 
     @PostMapping("/store")
     public String store(@ModelAttribute("product")
-                        Product product, Errors errors,
+                        Product product,
                         @RequestParam("file") MultipartFile file,
                         RedirectAttributes redirectAttributes) throws Exception {
         log.info("call store(product: {})", product);
@@ -83,6 +82,45 @@ public class ProductController {
         productService.save(product);
 
         redirectAttributes.addFlashAttribute("message", "Product created");
+        return "redirect:/products";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable Long id, Model model) throws Exception {
+        log.info("edit product(id: {})", id);
+
+        List<Category> categories = categoryService.getCategories();
+        model.addAttribute("categories", categories);
+
+        Product product = productService.findById(id);
+        model.addAttribute("product", product);
+
+        return "products/edit";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute("product")
+                         Product product,
+                         @RequestParam("file") MultipartFile file,
+                         RedirectAttributes redirectAttrs) throws Exception {
+        log.info("call update(product: {})", product);
+
+        if (file != null && !file.isEmpty()) {
+            String filename = System.currentTimeMillis() + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+            product.setImage_name(filename);
+
+            if (Files.notExists(Paths.get(storagePath))) {
+                Files.createDirectories(Paths.get(storagePath));
+            }
+
+            Files.copy(file.getInputStream(),
+                    Paths.get(storagePath).resolve(filename),
+                    StandardCopyOption.REPLACE_EXISTING);
+        }
+
+        productService.save(product);
+
+        redirectAttrs.addFlashAttribute("message", "Product updated");
         return "redirect:/products";
     }
 

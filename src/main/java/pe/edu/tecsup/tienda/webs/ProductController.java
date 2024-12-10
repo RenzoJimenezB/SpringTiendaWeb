@@ -26,8 +26,8 @@ public class ProductController {
     @Value("${app.storage.path}")
     private String storagePath;
 
-    CategoryService categoryService;
-    ProductService productService;
+    private final CategoryService categoryService;
+    private final ProductService productService;
 
     public ProductController(CategoryService categoryService, ProductService productService) {
         this.categoryService = categoryService;

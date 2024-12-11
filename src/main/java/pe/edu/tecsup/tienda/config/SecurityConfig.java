@@ -9,6 +9,20 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+/*
+class RawPasswordEncoder implements PasswordEncoder {
+    @Override
+    public String encode(CharSequence rawPassword) {
+        return rawPassword.toString();
+    }
+
+    @Override
+    public boolean matches(CharSequence rawPassword, String encodedPassword) {
+        return rawPassword.toString().equals(encodedPassword);
+    }
+}
+ */
+
 
 @Configuration
 @EnableWebSecurity
@@ -23,11 +37,11 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+//        return new RawPasswordEncoder();
     }
 
     @Autowired
     public void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-//        auth.userDetailsService(userDetailsService); // relies on Spring's DelegatingPasswordEncoder
+        auth.userDetailsService(userDetailsService); // relies on Spring's DelegatingPasswordEncoder
     }
 }

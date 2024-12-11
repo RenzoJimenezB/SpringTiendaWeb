@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout (title, assets, nav, content)" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      th:fragment="layout (title, assets, nav, content)" lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -44,11 +46,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" sec:authorize="hasAnyAuthority('Administrador')">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">Mantenimiento</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Categorías</a>
+                    <a class="dropdown-item" th:href="@{/categories}">Categorías</a>
                     <a class="dropdown-item" th:href="@{/products}">Productos</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Reportes</a>
@@ -56,7 +58,7 @@
             </li>
         </ul>
 
-        <ul class="navbar-nav">
+        <ul class="navbar-nav" sec:authorize="isAnonymous()">
             <li class="nav-item">
                 <a class="nav-link" href="#">Sign Up</a>
             </li>
@@ -64,9 +66,9 @@
                 <a class="nav-link" href="#">Login</a>
             </li>
         </ul>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav" sec:authorize="isAuthenticated()">
             <li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
+                <a class="nav-link" th:href="@{/profile}">Profile</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/logout}">Logout</a>

@@ -48,6 +48,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(requests ->
                         requests.requestMatchers("/", "/webjars/**", "/css/**", "/error/**")
                                 .permitAll()
+                                .requestMatchers("/products").authenticated()
                                 .requestMatchers("/admin/**")
                                 .hasAnyAuthority("Administrador"))
                 .formLogin(form -> form.loginProcessingUrl("/authenticate")

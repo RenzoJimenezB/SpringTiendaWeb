@@ -98,6 +98,18 @@ public class ProductController {
         return "products/edit";
     }
 
+    @GetMapping("/search")
+    public String showByName(@RequestParam String name, Model model) {
+        log.info("show products with name like(name: {})", name);
+
+        List<Product> products = productService.searchByNameLike(name);
+        products.forEach(System.out::println);
+
+        model.addAttribute("products", products);
+
+        return "products/show";
+    }
+
     @PostMapping("/update")
     public String update(@ModelAttribute("product")
                          Product product,
@@ -123,6 +135,5 @@ public class ProductController {
         redirectAttrs.addFlashAttribute("message", "Product updated");
         return "redirect:/products";
     }
-
 }
 

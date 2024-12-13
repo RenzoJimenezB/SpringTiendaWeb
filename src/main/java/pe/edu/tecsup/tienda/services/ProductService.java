@@ -17,4 +17,6 @@ public interface ProductService {
     void deleteById(Long id) throws Exception;
 
     void update(Product product) throws Exception;
+
+    List<Product> searchByNameLike(String name);
 }

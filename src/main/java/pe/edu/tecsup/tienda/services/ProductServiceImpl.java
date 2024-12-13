@@ -52,6 +52,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> searchByNameLike(String name) {
+        log.info("ProductServiceImpl.searchByNameLike()");
+
+        return productRepository.searchByNameLike(name);
+    }
+
+    @Override
     public void update(Product product) {
         log.info("ProductServiceImpl.update()");
 
@@ -64,4 +71,6 @@ public class ProductServiceImpl implements ProductService {
 
         productRepository.deleteById(id);
     }
+
+
 }

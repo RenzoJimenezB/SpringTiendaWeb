@@ -62,7 +62,7 @@
                     <td th:text="${product.stock}"/>
                     <td></td>
                     <td class="text-left">
-                        <a th:href="@{/products/show/{name}(name=${product.name})}" class="btn btn-info btn-sm"><i
+                        <a th:href="@{/products/show/{id}(id=${product.id})}" class="btn btn-info btn-sm"><i
                                 class="fa fa-eye"></i> Mostrar</a>
                         <a th:href="@{/products/edit/{id}(id=${product.id})}" class="btn btn-warning btn-sm"><i
                                 class="fa fa-edit"></i> Editar</a>
